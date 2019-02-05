@@ -6,7 +6,7 @@ var StudentSchema = new mongoose.Schema({
   isBrave: Boolean,
   isAhole: Boolean,
   isSmart: Boolean,
-  isNotAnythingElse: Boolean,
+  justHere: Boolean,
   updated_date: {type: Date, default: Date.now },
 });
 

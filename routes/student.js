@@ -21,8 +21,11 @@ router.get('/:id', function(req, res, next) {
 
 /* SAVE Student */
 router.post('/', function(req, res, next) {
+  console.log('new student', req.body);
   req.body.house = getWhatHouse(req.body);
+  console.log('does this get set?', req.body);
   Student.create(req.body, function (err, post) {
+    console.log(err);
     if (err) return next(err);
     res.json(post);
   });
@@ -45,6 +48,7 @@ router.delete('/:id', function(req, res, next) {
 });
 
 function getWhatHouse(student) {
+  console.log('this happened');
   choicesArray = [];
   if( student.isBrave ){
     choicesArray.push('Gryffindor');
@@ -55,24 +59,16 @@ function getWhatHouse(student) {
   if( student.isSmart ){
     choicesArray.push('Ravenclaw');
   }
-  if( student.isAhole ){
+  if( student.justHere ){
     choicesArray.push('Hufflepuff');
   }
 
+
   var randomNumber = Math.floor(Math.random()*choicesArray.length);
 
+
+
   return choicesArray[randomNumber];
-  
-
-
-
-
-
-
-  // isBrave: Boolean,
-  // isAhole: Boolean,
-  // isSmart: Boolean,
-  // isNotAnythingElse: Boolean,
 
 }
 

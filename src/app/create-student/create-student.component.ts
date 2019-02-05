@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, NgForm } from '@angular/forms';
+import { StudentService } from '../student.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-student',
@@ -10,15 +12,26 @@ export class CreateStudentComponent implements OnInit {
 
   student = new FormGroup({
     name: new FormControl(''),
-    isBrave: new FormControl(''),
-    isAhole: new FormControl(''),
-    isSmart: new FormControl(''),
-    justHere: new FormControl(''),
+    isBrave: new FormControl(false),
+    isAhole: new FormControl(false),
+    isSmart: new FormControl(false),
+    justHere: new FormControl(false),
   });
 
-  constructor() { }
+  constructor(private studentService: StudentService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  onFormSubmit(form: NgForm) {
+    console.log(form);
+    this.studentService.postStudent(form)
+      .subscribe(res => {
+          const id = res['_id'];
+          this.router.navigate(['/students']);
+        }, (err) => {
+          console.log(err);
+        });
   }
 
 }

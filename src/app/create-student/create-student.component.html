@@ -3,9 +3,9 @@
 </div>
 <h1>Begin the sorting</h1>
 
-<form [formGroup]="student">
+<form [formGroup]="student" (ngSubmit)="onFormSubmit(student.value)">
   <mat-form-field>
-    <input matInput placeholder="Enter Name" formControlName="isBrave">
+    <input matInput placeholder="Enter Name" formControlName="name">
   </mat-form-field>
 
     <mat-checkbox formControlName="isBrave">Brave</mat-checkbox>
