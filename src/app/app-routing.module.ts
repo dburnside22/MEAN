@@ -6,6 +6,7 @@ import { BookCreateComponent } from './book-create/book-create.component';
 import { BookEditComponent } from './book-edit/book-edit.component';
 import { StudentComponent } from './student/student.component';
 import { CreateStudentComponent } from './create-student/create-student.component';
+import { EditStudentComponent } from './edit-student/edit-student.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: 'student/create',
     component: CreateStudentComponent,
+  },
+  {
+    path: 'student/edit/:id',
+    component: EditStudentComponent,
   }
 ];
 

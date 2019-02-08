@@ -1,3 +1,26 @@
-<p>
-  edit-student works!
-</p>
+<div class="button-row">
+  <a mat-raised-button color="primary" [routerLink]="['/students']"><mat-icon>list</mat-icon></a>
+</div>
+<h1>Edit Student</h1>
+
+<form [formGroup]="student" (ngSubmit)="onFormSubmit(student.value)">
+  <mat-form-field>
+    <input matInput placeholder="Enter Name" formControlName="name">
+  </mat-form-field>
+
+    <mat-checkbox formControlName="isBrave">Brave</mat-checkbox>
+  
+    <mat-checkbox formControlName="isAhole">Evil</mat-checkbox>
+  
+    <mat-checkbox formControlName="isSmart">Smart</mat-checkbox>
+  
+    <mat-checkbox formControlName="justHere">Just Here</mat-checkbox>
+
+  <div>
+    <button mat-raised-button color="warn" (click)='exspell()'><mat-icon>close</mat-icon></button>
+  </div>
+  <div class="button-row train">
+    <button type="submit" [disabled]="!student.valid" mat-raised-button color="primary"><mat-icon>school</mat-icon></button>
+  </div>
+
+</form>
